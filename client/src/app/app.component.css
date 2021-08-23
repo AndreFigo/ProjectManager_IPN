@@ -1,0 +1,17 @@
+h3 {
+  color: white;
+  text-align: center;
+}
+
+hr {
+  color: white;
+  opacity: 100%;
+  width: 100%;
+  text-align: center;
+
+  border-radius: 10px;
+}
+
+.workHeader {
+  opacity: 40%;
+}

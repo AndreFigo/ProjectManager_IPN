@@ -1,0 +1,95 @@
+<header class="row headerMargin">
+  <div class="col-md-2 offset-md-4">
+    <h3 class="halfColor"><a routerLink="home">Home</a></h3>
+  </div>
+  <div class="col-md-2">
+    <h3 class="halfColor">Work</h3>
+    <hr size="6" />
+  </div>
+</header>
+
+<div class="mainBody">
+  <h2>Your work</h2>
+
+  <div *ngIf="storage.role === 'Programmer'" class="allTasks row">
+    <div *ngFor="let task of tasks" class="col-md-3">
+      <div class="taskBox" *ngIf="task.state != 3 || showArchived">
+        <h4>
+          {{ task.name }}
+          <!-- {{ errorMessage }} -->
+        </h4>
+
+        <p>Project: {{ task.projectIncludedInName }}</p>
+        <p>Deadline: {{ task.deadline | date: "dd/MM/yyyy" }}</p>
+        <p>Description: {{ task.description }}</p>
+        <div style="display: flex; justify-content: space-between">
+          <div style="margin-left: 10px">
+            <p class="stateP">
+              <i class="{{ statesClasses[task.state] }}" aria-hidden="true">
+              </i>
+              {{ states[task.state] }}
+            </p>
+          </div>
+
+          <div
+            style="
+              /* display: inline-block;
+              vertical-align: middle; */
+              margin-right: 10px;
+            "
+          >
+            <div *ngIf="task.state === 0">
+              <button class="edit" (click)="markAsDone(task)">
+                Mark as done
+              </button>
+            </div>
+            <div *ngIf="task.state > 0">
+              <button class="edit" (click)="deleteTask(task)">Archive</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="storage.role === 'Manager'" class="allTasks row">
+    <div *ngFor="let proj of projects" class="col-md-3">
+      <div class="taskBox">
+        <h4>{{ proj.name }}{{ errorMessage }}</h4>
+
+        <p style="text-align: left">Tasks:</p>
+        <div
+          *ngFor="let task of proj.tasks"
+          style="text-align: left; margin-left: 20px"
+        >
+          <p>
+            <span style="display: flex; justify-content: space-between">
+              <span>
+                <i class="{{ statesClasses[task.state] }}"> </i>&nbsp;
+                <a routerLink="">{{ task.name }}</a>
+              </span>
+              <a routerLink="" style="margin-right: 15px">
+                {{ task.responsibleUserName }}
+              </a>
+            </span>
+          </p>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+          "
+        >
+          <div style="margin-top: 5px">
+            <p>Budget: {{ proj.budget | currency }}</p>
+          </div>
+          <div style="margin-right: 10px">
+            <button class="edit">Edit project</button>
+          </div>
+        </div>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>

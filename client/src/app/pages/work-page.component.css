@@ -1,0 +1,66 @@
+/* .allTasks {
+  margin-left: 50px;
+  margin-right: 50px;
+} */
+
+.taskBox {
+  margin: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #929191bd;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Berlin Sans FB";
+}
+.stateP {
+  color: white;
+  padding: 5px;
+}
+
+.toDo {
+  color: rgb(155, 107, 4);
+}
+
+.expired {
+  color: rgb(170, 4, 4);
+}
+
+.completed {
+  color: rgb(29, 138, 2);
+}
+
+.mainBody {
+  margin-top: 40px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.taskBox h4 {
+  color: #d2c585;
+}
+
+.taskBox p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 1em;
+  color: rgb(219, 218, 218);
+}
+
+.taskBox a {
+  color: white;
+}
+
+.edit {
+  background-color: #d2c585;
+  border: solid 1px rgb(121, 121, 121);
+  text-align: center;
+  font-size: 0.8em;
+  border-radius: 10px;
+  color: white;
+  opacity: 100%;
+  /* margin-top: 10px; */
+  /* border: 0px; */
+  padding: 5px 10px;
+}

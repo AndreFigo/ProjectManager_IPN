@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="879" height="541.167" viewBox="0 0 879 541.167">
+  <defs>
+    <filter id="WorkAssist" x="0" y="257.167" width="879" height="284" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-color="#d2c585" flood-opacity="0.478"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="WorkAssist-2" x="0" y="257.167" width="879" height="284" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur result="blur-2"/>
+      <feFlood flood-color="#d2c585" flood-opacity="0.161" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_7" data-name="Grupo 7" transform="translate(-608.5 -345.417)">
+    <g id="suitcase" transform="translate(814.5 306.5)" opacity="0.81" style="isolation: isolate">
+      <path id="Caminho_6" data-name="Caminho 6" d="M291.875,126.479a19.465,19.465,0,0,1-19.458-19.458V77.833H194.583v29.187a19.458,19.458,0,1,1-38.917,0V77.833a38.956,38.956,0,0,1,38.917-38.917h77.833a38.956,38.956,0,0,1,38.917,38.917v29.187A19.465,19.465,0,0,1,291.875,126.479Z" fill="#262625"/>
+      <path id="Caminho_7" data-name="Caminho 7" d="M247.315,299.269A40.079,40.079,0,0,1,233.5,301.6a42.637,42.637,0,0,1-14.983-2.724L0,226.106V374.573a53.48,53.48,0,0,0,53.51,53.51H413.49A53.48,53.48,0,0,0,467,374.573V226.106Z" fill="#262625"/>
+      <path id="Caminho_8" data-name="Caminho 8" d="M467,150.8v44.56L238.17,271.638a14.4,14.4,0,0,1-9.34,0L0,195.362V150.8a53.48,53.48,0,0,1,53.51-53.51H413.49A53.48,53.48,0,0,1,467,150.8Z" fill="#262625"/>
+    </g>
+    <g data-type="innerShadowGroup">
+      <g transform="matrix(1, 0, 0, 1, 608.5, 345.42)" filter="url(#WorkAssist)">
+        <text id="WorkAssist-3" data-name="WorkAssist" transform="translate(45 430.17)" fill="#e2e1e0" font-size="194" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700"><tspan x="0" y="0">WorkAssist</tspan></text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 608.5, 345.42)" filter="url(#WorkAssist-2)">
+        <text id="WorkAssist-4" data-name="WorkAssist" transform="translate(45 430.17)" fill="#fff" font-size="194" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700"><tspan x="0" y="0">WorkAssist</tspan></text>
+      </g>
+    </g>
+    <text id="WA" transform="translate(967 504)" fill="#d2c585" font-size="123" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700" opacity="0.32"><tspan x="0" y="0">WA</tspan></text>
+  </g>
+</svg>

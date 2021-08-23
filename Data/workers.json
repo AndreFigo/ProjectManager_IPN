@@ -1,0 +1,26 @@
+[
+	{
+		"Username": "Figowara",
+		"Email": "Figowara@gmail.com",
+		"FirstName": "Figo",
+		"LastName": "Wara",
+		"Password": "P@ssw0rd",
+		"RoleName": "Manager"
+	},
+	{
+		"Username": "AndreFigo",
+		"Email": "AndreFigo@gmail.com",
+		"FirstName": "Andre",
+		"LastName": "Figo",
+		"Password": "P@ssw0rd",
+		"RoleName": "Programmer"
+	},
+	{
+		"Username": "FigoAndre",
+		"Email": "FigoAndre@gmail.com",
+		"FirstName": "Figo",
+		"LastName": "Andre",
+		"Password": "P@ssw0rd",
+		"RoleName": "Programmer"
+	}
+]

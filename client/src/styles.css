@@ -1,0 +1,36 @@
+body {
+  background: url(assets/Images/office_dark.png) no-repeat center center fixed;
+  background-size: cover;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+h3,
+h2,
+h4 {
+  color: white;
+  text-align: center;
+}
+
+hr {
+  color: #d2c585;
+  /* color: white */
+  opacity: 100%;
+  width: 50%;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.headerMargin {
+  margin-top: 10px;
+}
+
+h3 a {
+  color: white;
+  text-decoration: none;
+  opacity: 60%;
+}
+h3 a:hover {
+  color: white;
+  opacity: 100%;
+}

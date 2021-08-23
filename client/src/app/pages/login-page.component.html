@@ -1,0 +1,88 @@
+<header class="row headerMargin">
+  <div class="col-md-2 offset-md-4">
+    <h3 class="halfColor"><a routerLink="home">Home</a></h3>
+  </div>
+  <div class="col-md-2">
+    <h3 class="halfColor">Work</h3>
+    <hr size="6" />
+  </div>
+  <div class="col-md-1 offset-md-3">
+    <button class="but-gold">Login</button>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="centered-box">
+      <h1>Login</h1>
+
+      <form (submit)="onLogin()">
+        <div class="form-group">
+          <label for="username"> Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            #username="ngModel"
+            [(ngModel)]="creds.username"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              username.touched && username.invalid && username.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="creds.password"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              password.touched && password.invalid && password.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              asp-for="RememberMe"
+              class="form-check-input"
+              type="checkbox"
+            />
+            <label asp-for="RememberMe" class="form-check-label"
+              >Remember me</label
+            >
+          </div>
+          <span asp-validation-for="RememberMe" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+          <button
+            type="submit"
+            class="btn but-gold col-4 offset-4"
+            [disabled]="username.invalid || password.invalid"
+          >
+            <i class="fa fa-arrow-circle-right"></i> Continue
+          </button>
+        </div>
+        <div class="alert-danger login-error" *ngIf="errorMsg">
+          {{ errorMsg }}
+        </div>
+        <p><a routerLink="register">New user? Create new account</a></p>
+      </form>
+      <!-- {{ creds | json }} -->
+    </div>
+  </div>
+</div>

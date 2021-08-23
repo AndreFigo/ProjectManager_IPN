@@ -1,0 +1,44 @@
+[
+	{
+		"Name": "TaskManager",
+		"Budget": 100,
+		"ManagerUserName": "Figowara",
+		"Tasks": [
+			{
+				"Name": "front-end",
+				"Description": "do the front-end for this project",
+				"ResponsibleUserName": "AndreFigo",
+				"State": 0,
+				"Deadline": "1890-07-29T00:00:00"
+			},
+			{
+				"Name": "back-end",
+				"Description": "do the back-end for this project",
+				"ResponsibleUserName": "FigoAndre",
+				"State": 0,
+				"Deadline": "1890-07-29T00:00:00"
+			}
+		]
+	},
+	{
+		"Name": "TaskManagerv2",
+		"Budget": 200,
+		"ManagerUserName": "Figowara",
+		"Tasks": [
+			{
+				"Name": "front-end",
+				"Description": "do the front-end for this project",
+				"ResponsibleUserName": "AndreFigo",
+				"State": 0,
+				"Deadline": "1890-07-29T00:00:00"
+			},
+			{
+				"Name": "back-end",
+				"Description": "do the back-end for this project",
+				"ResponsibleUserName": "FigoAndre",
+				"State": 0,
+				"Deadline": "1890-07-29T00:00:00"
+			}
+		]
+	}
+]
