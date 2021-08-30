@@ -48,6 +48,58 @@ namespace TaskManager.Controllers
             }
         }
 
+        [Route(("Programmers"))]
+        [HttpGet]
+        [Authorize(Roles = "Manager")]
+
+        public async Task<IActionResult> Programmers()
+        {
+            try
+            {
+                var workers = repos.GetAllProgrammers();
+                var programmers = new List<Worker>();
+                foreach(var w in workers)
+                {
+                    var roles = await userManager.GetRolesAsync(w);
+                    if (roles.Count==1 && roles[0] == "Programmer")
+                    {
+                        programmers.Add(w);
+                    }
+                }
+                return Ok(mapper.Map<IEnumerable<RegisterViewModel>>(programmers));
+            }
+            catch
+            {
+                return BadRequest("Failed to get tasks");
+            }
+        }
+
+        [HttpGet("get-{username}")]
+        public async Task<IActionResult> GetAsync(string username)
+        {
+            try
+            {
+                var worker = repos.GetWorkerByName(username);
+
+                if (worker != null)
+                {
+                    var roles = await userManager.GetRolesAsync(worker);
+                    var result = mapper.Map<RegisterViewModel>(worker);
+                    result.RoleName = roles[0];
+                    result.TotalTasksOrProj = repos.GetTotalTaksOrProj(username, result.RoleName);
+                    return Ok(result);
+                    
+                }
+                else
+                    return NotFound();
+            }
+            catch
+            {
+                //logger.LogError($"Failed to get orders; {ex}");
+                return BadRequest("Failed to get project");
+            }
+        }
+
 
     }
 }

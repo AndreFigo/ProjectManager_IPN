@@ -18,6 +18,8 @@ namespace TaskManager.ViewModels
         [Required]
         public string RoleName { get; set; }
 
+        public int TotalTasksOrProj { get;  set; }
+
 
 
     }

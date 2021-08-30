@@ -5,4 +5,5 @@ export class ProjectWorker {
     lastName: string="";
     password: string="";
     roleName: string="";
+    totalTasksOrProj: number=0;
 }

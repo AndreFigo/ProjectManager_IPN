@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="275" height="127" viewBox="0 0 275 127">
+  <defs>
+    <filter id="WorkAssist" x="34" y="0" width="241" height="127" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-color="#d2c585" flood-opacity="0.478"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="WorkAssist-2" x="34" y="0" width="241" height="127" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur result="blur-2"/>
+      <feFlood flood-color="#d2c585" flood-opacity="0.161" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="WorkAssist_Logo_mini_with_name" data-name="WorkAssist Logo mini with name" transform="translate(0 27)">
+    <g id="WorkAssist_Logo_mini" data-name="WorkAssist Logo mini">
+      <path id="Subtração_4" data-name="Subtração 4" d="M57,53H15A15,15,0,0,1,0,38V21.353c0-.278.008-.559.023-.835l35.828,17.04.021.046.038-.018.193.092.107-.234L71.972,20.435c.019.313.028.622.028.918V38A15,15,0,0,1,57,53ZM36.09,33.657h0L.693,16.821A15.027,15.027,0,0,1,15,6.354h8.748V5a5.006,5.006,0,0,1,5-5H43.4a5.006,5.006,0,0,1,5,5V6.354H57A15.026,15.026,0,0,1,71.33,16.9L36.09,33.656ZM29.949,3.409V6.044H41.9V3.409Z" transform="translate(0 0)" fill="#262625" opacity="0.8"/>
+      <text id="WA" transform="translate(24 22)" fill="#d2c585" font-size="18" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700" opacity="0.32"><tspan x="0" y="0">WA</tspan></text>
+    </g>
+    <g data-type="innerShadowGroup">
+      <g transform="matrix(1, 0, 0, 1, 0, -27)" filter="url(#WorkAssist)">
+        <text id="WorkAssist-3" data-name="WorkAssist" transform="translate(79 61)" fill="#e2e1e0" font-size="37" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700"><tspan x="0" y="0">WorkAssist</tspan></text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, -27)" filter="url(#WorkAssist-2)">
+        <text id="WorkAssist-4" data-name="WorkAssist" transform="translate(79 61)" fill="#fff" font-size="37" font-family="SanvitoPro-BoldDisp, Sanvito Pro Display" font-weight="700"><tspan x="0" y="0">WorkAssist</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

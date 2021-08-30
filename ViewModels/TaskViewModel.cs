@@ -14,7 +14,11 @@ namespace TaskManager.ViewModels
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
         public string ProjectIncludedInName { get; set; }
+        [Required]
+        public int ProjectIncludedInId { get; set; }
+
         [Required]
         public string ResponsibleUserName { get; set; }
 

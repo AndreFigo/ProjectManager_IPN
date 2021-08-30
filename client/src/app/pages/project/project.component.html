@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="projectBox">
+      <p>{{ errorMessage }}</p>
+      <h1>Project details</h1>
+      <p>
+        <span class="bold" style="color: white"> Name:</span> &nbsp;{{
+          project.name
+        }}
+      </p>
+
+      <p style="text-align: left; color: white" class="bold">Tasks:</p>
+      <div
+        *ngFor="let task of project.tasks"
+        style="text-align: left; margin-left: 20px"
+      >
+        <p>
+          <span style="display: flex; justify-content: space-between">
+            <span>
+              <i
+                class="{{ statesClasses[task.state] }}"
+                style="margin-right: -5px"
+              >
+              </i>
+              <a class="underlined link" (click)="showTask(task)">{{
+                task.name
+              }}</a>
+            </span>
+            <!-- (click)="userInfo(task.responsibleUserName)" -->
+            <a
+              routerLink="/work/user/{{ task.responsibleUserName }}"
+              style="margin-right: 15px"
+            >
+              {{ task.responsibleUserName }}
+            </a>
+          </span>
+        </p>
+      </div>
+      <div style="margin-top: 10px">
+        <div style="margin-top: 5px">
+          <p>
+            <span class="bold" style="color: white"> Budget:</span> &nbsp;
+            {{ project.budget | currency: "EUR" }}
+          </p>
+        </div>
+      </div>
+      <p></p>
+    </div>
+  </div>
+</div>

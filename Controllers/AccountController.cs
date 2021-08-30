@@ -70,7 +70,16 @@ namespace TaskManager.Controllers
                 var result = await userManager.CreateAsync(newWorker, model.Password);
                 await userManager.AddToRoleAsync(newWorker, model.RoleName);
                 if (result == IdentityResult.Success)
-                    return Ok("New user registered");
+                {
+                    var loginData = new LoginViewModel
+                    {
+                        Username = model.Username,
+                        Password = model.Password
+                    };
+                    var token = await CreateToken(loginData);
+                    return token;
+                }
+
             }
             return BadRequest("Failed to create user");
         }
@@ -88,13 +97,15 @@ namespace TaskManager.Controllers
                     var result = await this.signInManager.CheckPasswordSignInAsync(user, model.Password, false);
                     if (result.Succeeded)
                     {
+                        var roles = await userManager.GetRolesAsync(user);
                         //create the token
                         var claims = new[]
                         {
                             new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 
-                            new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+                            new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
+                            new Claim (ClaimTypes.Role, roles[0])
                         };
 
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.config["Tokens:Key"]));
@@ -102,7 +113,6 @@ namespace TaskManager.Controllers
 
                         var token = new JwtSecurityToken(this.config["Tokens:Issuer"], this.config["Tokens:Audience"], claims, signingCredentials: creds, expires: DateTime.UtcNow.AddMinutes(60));
                         
-                        var roles = await userManager.GetRolesAsync(user);
 
                         return Created("", new
                         {

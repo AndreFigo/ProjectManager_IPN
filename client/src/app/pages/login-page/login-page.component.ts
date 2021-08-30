@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { StorageService } from '../services/storage.service';
-import { LoginRequest } from "../shared/LoginResults";
+import { StorageService } from 'src/app/services/storage.service';
+import { LoginRequest } from 'src/app/shared/LoginResults';
+
 
 
 
@@ -27,7 +28,7 @@ public errorMsg: string = "";
   onLogin() {
     this.errorMsg="";
     this.storage.login(this.creds).subscribe(()=>{
-      this.router.navigate(["work"]);
+      this.router.navigate(["/home"]);
     },
     error => {
       console.log(error);

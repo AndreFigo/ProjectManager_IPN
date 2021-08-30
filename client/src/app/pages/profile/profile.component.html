@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="profileBox">
+      <h1>Profile Page</h1>
+
+      <div class="row">
+        <div class="col-6">
+          <p>
+            <span class="bold" style="color: white">Username: </span>
+            {{ worker.username }}
+          </p>
+          <p>
+            <span class="bold" style="color: white">First name: </span>
+            {{ worker.firstName }}
+          </p>
+          <p>
+            <span class="bold" style="color: white">Last name: </span>
+            {{ worker.lastName }}
+          </p>
+          <p>
+            <span class="bold" style="color: white">Role: </span>
+            {{ worker.roleName }}
+            <i class="fa {{ roleIcons[roleIndex()] }}" aria-hidden="true"></i>
+          </p>
+          <p>
+            <span class="bold" style="color: white"
+              >Total {{ workType[roleIndex()] }}:
+            </span>
+            {{ worker.totalTasksOrProj }}
+          </p>
+        </div>
+        <div class="col-6" style="text-align: center">
+          <div style="color: white; margin-top: 20px">
+            <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+          </div>
+          <div style="margin-top: 30px">
+            <a class="but-gold">Upload picture</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

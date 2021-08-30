@@ -1,1 +1,18 @@
+.halfColor a {
+  color: white;
+  text-decoration: none;
+  opacity: 60%;
+}
+.halfColor a:hover {
+  color: white;
+  opacity: 100%;
+}
 
+hr {
+  color: #d2c585;
+  /* color: white */
+  opacity: 100%;
+  width: 50%;
+  border-radius: 10px;
+  margin: auto;
+}

@@ -93,7 +93,7 @@ namespace TaskManager.Data
             {
                 Name = p.Name,
                 Budget = p.Budget,
-                Manager = newManager,
+                Manager = newManager,   
                 Tasks = (List<ProjectTask>)mapper.Map<IEnumerable<ProjectTask>>(p.Tasks)
             };
             for( int i=0; i< newProj.Tasks.Count;i++)

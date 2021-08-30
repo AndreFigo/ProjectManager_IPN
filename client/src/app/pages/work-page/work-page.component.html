@@ -1,17 +1,21 @@
-<header class="row headerMargin">
-  <div class="col-md-2 offset-md-4">
-    <h3 class="halfColor"><a routerLink="home">Home</a></h3>
-  </div>
-  <div class="col-md-2">
-    <h3 class="halfColor">Work</h3>
-    <hr size="6" />
-  </div>
-</header>
+<app-header></app-header>
 
 <div class="mainBody">
-  <h2>Your work</h2>
+  <div style="display: flex; justify-content: space-between">
+    <h2>Your work</h2>
+    <button
+      *ngIf="storage.role === 'Programmer'"
+      class="edit"
+      (click)="ToggleArchived()"
+    >
+      Show Archived
+    </button>
+  </div>
 
   <div *ngIf="storage.role === 'Programmer'" class="allTasks row">
+    <div *ngIf="tasks.length === 0" style="text-align: center">
+      <h1>You have yet to been assigned any tasks!</h1>
+    </div>
     <div *ngFor="let task of tasks" class="col-md-3">
       <div class="taskBox" *ngIf="task.state != 3 || showArchived">
         <h4>
@@ -19,7 +23,15 @@
           <!-- {{ errorMessage }} -->
         </h4>
 
-        <p>Project: {{ task.projectIncludedInName }}</p>
+        <p>
+          Project:
+          <a
+            class="underlined"
+            routerLink="project/{{ task.projectIncludedInId }}"
+          >
+            {{ task.projectIncludedInName }}
+          </a>
+        </p>
         <p>Deadline: {{ task.deadline | date: "dd/MM/yyyy" }}</p>
         <p>Description: {{ task.description }}</p>
         <div style="display: flex; justify-content: space-between">
@@ -43,8 +55,8 @@
                 Mark as done
               </button>
             </div>
-            <div *ngIf="task.state > 0">
-              <button class="edit" (click)="deleteTask(task)">Archive</button>
+            <div *ngIf="task.state === 1 || task.state === 2">
+              <button class="edit" (click)="archiveTask(task)">Archive</button>
             </div>
           </div>
         </div>
@@ -66,9 +78,15 @@
             <span style="display: flex; justify-content: space-between">
               <span>
                 <i class="{{ statesClasses[task.state] }}"> </i>&nbsp;
-                <a routerLink="">{{ task.name }}</a>
+                <a class="underlined link" (click)="showTask(task)">{{
+                  task.name
+                }}</a>
               </span>
-              <a routerLink="" style="margin-right: 15px">
+              <!-- (click)="userInfo(task.responsibleUserName)" -->
+              <a
+                routerLink="user/{{ task.responsibleUserName }}"
+                style="margin-right: 15px"
+              >
                 {{ task.responsibleUserName }}
               </a>
             </span>
@@ -82,13 +100,20 @@
           "
         >
           <div style="margin-top: 5px">
-            <p>Budget: {{ proj.budget | currency }}</p>
+            <p>Budget: {{ proj.budget | currency: "EUR" }}</p>
           </div>
           <div style="margin-right: 10px">
-            <button class="edit">Edit project</button>
+            <button class="edit" (click)="editProj(proj)">Edit project</button>
           </div>
         </div>
         <p></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="taskBox">
+        <a class="plus-sign" (click)="addProj()">
+          <i class="fa fa-plus addP" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </div>

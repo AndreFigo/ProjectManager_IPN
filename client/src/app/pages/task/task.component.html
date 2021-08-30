@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="taskBox">
+      <h1>
+        {{ task.name }}
+        <!-- {{ errorMessage }} -->
+      </h1>
+
+      <p>
+        <span class="bold" style="color: white">Project: </span>
+
+        <a
+          class="underlined"
+          routerLink="/work/project/{{ task.projectIncludedInId }}"
+        >
+          {{ task.projectIncludedInName }}
+        </a>
+      </p>
+      <p>
+        <span class="bold" style="color: white">Deadline: </span>
+        {{ task.deadline | date: "dd/MM/yyyy" }}
+      </p>
+      <p>
+        <span class="bold" style="color: white">Description: </span>
+        {{ task.description }}
+      </p>
+
+      <p class="stateP">
+        <span class="bold" style="color: white">State: </span>
+        {{ states[task.state] }}&nbsp;
+        <i class="{{ statesClasses[task.state] }}" aria-hidden="true"> </i>
+      </p>
+    </div>
+  </div>
+</div>

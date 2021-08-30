@@ -24,7 +24,7 @@ namespace TaskManager.Controllers
             this.repos = repos;
             this.mapper = mapper;
         }
-
+        [HttpGet]
         public IActionResult Get()
         {
             try
@@ -60,7 +60,7 @@ namespace TaskManager.Controllers
             }
         }
 
-
+        [HttpPut]
         public IActionResult Put(List<TaskViewModel> tasks) 
         {
             if (ModelState.IsValid) { 

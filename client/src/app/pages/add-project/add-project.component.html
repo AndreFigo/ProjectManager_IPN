@@ -1,0 +1,224 @@
+<div class="projectWindow">
+  <div style="margin-top: 20px; position: fixed">
+    <a routerLink="/work" class="but-gold back-btn but-gold-a"
+      ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a
+    >
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="projectBox">
+        <h1 *ngIf="newProject.id === 0">Add project</h1>
+        <h1 *ngIf="newProject.id != 0">Edit project</h1>
+        <!-- <h2>{{ newProject.id }}</h2> -->
+        <form (submit)="addProj()">
+          <div class="form-group">
+            <label for="projName"> Project name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="projName"
+              #projName="ngModel"
+              [(ngModel)]="newProject.name"
+              required
+            />
+            <div
+              class="text-warning"
+              *ngIf="
+                projName.touched &&
+                projName.invalid &&
+                projName.errors?.required
+              "
+            >
+              Required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget €</label>
+            <input
+              type="number"
+              class="form-control"
+              name="budget"
+              step="0.01"
+              #budget="ngModel"
+              ngModel
+              number
+              [(ngModel)]="newProject.budget"
+              required
+            />
+            <div class="text-warning" *ngIf="budget.touched && budget.invalid">
+              Required
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between">
+            <p>Tasks:</p>
+            <a (click)="addTask()" style="margin-right: 15px">
+              <i class="fa fa-plus addT" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div
+            *ngFor="let task of newProject.tasks"
+            style="text-align: left; margin-left: 20px"
+          >
+            <p>
+              <i class="{{ statesClasses[task.state] }}"> </i>&nbsp;
+              <a (click)="editTask(task)">{{ task.name }}</a>
+            </p>
+          </div>
+
+          <div class="form-group" style="text-align: center">
+            <button
+              type="submit"
+              class="btn but-gold"
+              [disabled]="
+                projName.invalid || budget.invalid || newProject.budget <= 0
+              "
+            >
+              <i class="fa fa-arrow-circle-right"></i> Save
+            </button>
+          </div>
+          <div class="alert-danger login-error" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="showTask" class="col-md-4">
+      <div class="taskEditBox">
+        <div class="">
+          <h1>Task</h1>
+          <form (submit)="saveTask()">
+            <div class="form-group">
+              <label for="taskName"> Task name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="taskName"
+                #taskName="ngModel"
+                [(ngModel)]="taskToEdit.name"
+                required
+              />
+              <div
+                class="text-warning"
+                *ngIf="
+                  taskName.touched &&
+                  taskName.invalid &&
+                  taskName.errors?.required
+                "
+              >
+                Required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description"> Description</label>
+              <textarea
+                rows="4"
+                class="form-control"
+                name="description"
+                #description="ngModel"
+                [(ngModel)]="taskToEdit.description"
+                required
+              ></textarea>
+              <div
+                class="text-warning"
+                *ngIf="
+                  taskName.touched &&
+                  taskName.invalid &&
+                  taskName.errors?.required
+                "
+              >
+                Required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="deadline">Deadline</label>
+              <input
+                type="datetime-local"
+                min=""
+                class="form-control"
+                name="deadline"
+                #deadline="ngModel"
+                ngModel
+                datetime-local
+                [(ngModel)]="taskToEdit.deadline"
+                required
+              />
+              <div
+                class="text-warning"
+                *ngIf="deadline.touched && deadline.invalid"
+              >
+                Invalid date (required)
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-top: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div style="display: inline-block; vertical-align: middle">
+                <label>Programmer:</label>
+              </div>
+              <div style="display: inline-block; vertical-align: middle">
+                <a class="but-gold but-gold-a" (click)="addProgrammer()">
+                  <i class="fa fa-plus addT" aria-hidden="true"></i> Choose
+                </a>
+              </div>
+            </div>
+
+            <div class="form-control" style="margin-bottom: 10px">
+              <p
+                *ngIf="taskToEdit.responsibleUserName.length > 0"
+                style="color: black; margin-bottom: 0px"
+              >
+                {{ taskToEdit.responsibleUserName }}
+              </p>
+            </div>
+
+            <div class="form-group" style="text-align: center">
+              <button
+                type="submit"
+                class="btn but-gold"
+                [disabled]="
+                  taskName.invalid ||
+                  description.invalid ||
+                  deadline.invalid ||
+                  !this.deadlineIsValid() ||
+                  this.taskToEdit.responsibleUserName.length === 0
+                "
+              >
+                <i class="fa fa-arrow-circle-right"></i> Save
+              </button>
+            </div>
+            <div class="alert-danger login-error" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
+          </form>
+          <!-- {{ taskToEdit | json }} -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showAddProgrammer" class="col-md-4">
+      <div class="chooseProg scrollable">
+        <h1>Choose a Programmer</h1>
+        <div class="row">
+          <div *ngFor="let p of programmers" class="col-md-6">
+            <div class="progIcon" style="text-align: center">
+              <div>
+                <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+              </div>
+              <p>{{ p.username }}</p>
+              <button class="but-gold but-gold-a" (click)="selectProg(p)">
+                select
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

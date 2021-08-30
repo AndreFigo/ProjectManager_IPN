@@ -10,12 +10,12 @@ namespace TaskManager.ViewModels
 {
     public class ProjectViewModel
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public double Budget { get; set; }
-        [Required]
         public string ManagerUserName { get; set; }
         [Required]
         public ICollection<TaskViewModel> Tasks { get; set; }

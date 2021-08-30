@@ -1,0 +1,148 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="centered-box">
+      <h1>Register</h1>
+
+      <form (submit)="onRegister()">
+        <div class="form-group">
+          <label for="username"> Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            #username="ngModel"
+            [(ngModel)]="regInfo.username"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              username.touched && username.invalid && username.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="regInfo.password"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              password.touched && password.invalid && password.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            ngModel
+            email
+            #email="ngModel"
+            [(ngModel)]="regInfo.email"
+            required
+          />
+          <div class="text-warning" *ngIf="email.touched && email.invalid">
+            Invalid email (required)
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">FirstName</label>
+          <input
+            type="text"
+            class="form-control"
+            name="firstName"
+            #firstName="ngModel"
+            [(ngModel)]="regInfo.firstName"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              firstName.touched &&
+              firstName.invalid &&
+              firstName.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="lastName"
+            class="form-control"
+            name="lastName"
+            #lastName="ngModel"
+            [(ngModel)]="regInfo.lastName"
+            required
+          />
+          <div
+            class="text-warning"
+            *ngIf="
+              lastName.touched && lastName.invalid && lastName.errors?.required
+            "
+          >
+            Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm select"
+            name="role"
+            #role="ngModel"
+            [(ngModel)]="regInfo.roleName"
+            required
+            style="font-family: Arial, FontAwesome"
+          >
+            <option [value]="'Manager'">&#xf2c1; &nbsp; Manager</option>
+            <option [value]="'Programmer'">&#xf108; &nbsp; Programmer</option>
+          </select>
+          <div
+            class="text-warning"
+            *ngIf="role.touched && role.invalid && role.errors?.required"
+          >
+            Required
+          </div>
+        </div>
+
+        <div class="form-group" style="text-align: center">
+          <button
+            type="submit"
+            class="btn but-gold"
+            [disabled]="
+              username.invalid ||
+              password.invalid ||
+              firstName.invalid ||
+              lastName.invalid ||
+              email.invalid ||
+              role.invalid
+            "
+          >
+            <i class="fa fa-arrow-circle-right"></i> Continue
+          </button>
+        </div>
+        <div class="alert-danger login-error" *ngIf="errorMsg">
+          {{ errorMsg }}
+        </div>
+      </form>
+      <!-- {{ creds | json }} -->
+      <!-- {{ regInfo | json }} -->
+    </div>
+  </div>
+</div>

@@ -35,6 +35,7 @@ namespace TaskManager
             services.AddIdentity<Worker, IdentityRole>(cfg => {
                     cfg.User.RequireUniqueEmail = true;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ProjectsContext>();
 
             

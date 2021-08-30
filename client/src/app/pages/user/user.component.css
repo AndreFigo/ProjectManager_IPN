@@ -1,0 +1,36 @@
+.profileBox {
+  padding: 30px;
+  margin: 90px;
+  margin-top: 15%;
+  background-position: center;
+  text-align: center center fixed;
+  background-color: #92919171;
+  border-radius: 10px;
+}
+
+.profileBox p {
+  color: rgba(255, 255, 255, 0.699);
+  padding-left: 20px;
+}
+.profileBox h1 {
+  color: #d2c585;
+
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.white {
+  color: white;
+  background-color: white;
+}
+
+.but-gold {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+
+.but-gold:hover {
+  cursor: pointer;
+  color: black;
+}

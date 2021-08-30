@@ -2,6 +2,8 @@ h1 {
   text-align: center;
   color: white;
   font-family: "Berlin Sans FB";
+  /* font-family: "Varsity regular"; */
+
   font-size: 2.5em;
 }
 
@@ -25,18 +27,14 @@ h1 {
   margin-bottom: 5px;
 }
 .centered-box button {
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .but-gold {
-  background-color: #d2c585;
-  text-align: center;
-  border-radius: 50px;
-  color: white;
   opacity: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+  width: auto;
 }
 
 .form-control:focus,

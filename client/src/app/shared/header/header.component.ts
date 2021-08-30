@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   
   href : string = "";
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public storage : StorageService, private route: ActivatedRoute) {
     
   }
   
@@ -19,8 +20,8 @@ export class HeaderComponent implements OnInit {
     console.log(this.href);
   }
 
-  isOnHomePage(): boolean{
-    return this.href === "/home";
+  isOnProfilePage(): boolean{
+    return this.href === "/profile";
   }
   isOnWorkPage(): boolean{
     return this.href === "/work";
